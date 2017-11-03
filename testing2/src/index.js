@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import Frame from './frame';
+import App from './App.js';
 
 let container = document.createElement('div');
 container.setAttribute("id", "app-wrapper");
 document.getElementsByClassName("bucketDivider")[0].parentElement.prepend(container);
 
 ReactDOM.render(<App />, container);
-// registerServiceWorker();
 
 // if (Frame.isReady()) {
 //   Frame.toggle()
@@ -17,8 +16,8 @@ ReactDOM.render(<App />, container);
 // }
 
 // function boot() {
-//   const root = document.createElement('div');
-//   document.body.appendChild(root);
+//   const root = document.createElement('div')
+//   document.body.appendChild(root)
 
-//   ReactDOM.render(<App />, root);
+//   ReactDOM.render(<Frame />, root)
 // }

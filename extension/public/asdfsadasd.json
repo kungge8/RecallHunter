@@ -1,0 +1,18 @@
+
+{
+  "manifest_version": 2,
+  "name": "My Extension",
+  "version": "1.0.0",
+  // "default_locale": "en",
+  "description": "WABLAM",
+  "browser_action": {
+    "default_icon": "icon32.png",
+    "default_title": "RecallHunter",
+    "default_popup": "./public/index.html"
+  },
+  "content_security_policy": "script-src 'self' https://www.google.com; object-src 'self'",
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
+}
