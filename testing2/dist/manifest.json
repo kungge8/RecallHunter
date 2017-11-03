@@ -1,0 +1,33 @@
+{
+  "name": "???????????",
+  "version": "0.0.5",
+  "manifest_version": 2,
+  "description": "Browse Instagram from anywhere",
+  "icons": {
+    "16": "assets/icon.png",
+    "32": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "tabs",
+    "https://*/*",
+    "http://*/*",
+    "https://www.instagram.com/*"
+  ],
+  "browser_action": {},
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "default_locale": "en",
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/?mobile=true"],
+      "js": ["cs.js"],
+      "run_at" : "document_start",
+      "all_frames": true
+    }
+  ]
+}
