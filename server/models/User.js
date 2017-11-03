@@ -11,10 +11,10 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  query: {
+  watchlist: [{
     type: Schema.Types.ObjectId,
-    ref: "Query"
-  }
+    ref: "Product"
+  }]
 });
 
 const User = mongoose.model("User", UserSchema);

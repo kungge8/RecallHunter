@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const QuerySchema = new Schema({
+const ProductSchema = new Schema({
   productName: String,
   productType: String
 });
 
-const Query = mongoose.model("Query", QuerySchema);
+const Product = mongoose.model("Product", ProductSchema);
 
-module.exports = Query;
+module.exports = Product;
