@@ -1,12 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Form from './components/SearchForm.js';
+// import logo from './logo.svg';
+// import './App.css';
 
 class App extends Component {
+	state = {
+		timer: 0,
+		product: document.getElementById("productTitle").innerHTML.trim()
+	}
+
+	tick = () => {
+		this.setState({
+			timer: this.state.timer + 1
+		});
+	}
+
+	componentDidMount = () => {
+		this.interval = setInterval(this.tick, 1000);
+	}
+
   render() {
     return (
       <div className="App">
-        <p>chad is hodge</p>
+      	<hr/>
+      	<p>Chad is hodge</p>
+      	<p>{this.state.product}</p>
+      	<p>{this.state.timer}</p>
+        <Form />
       </div>
     );
   }

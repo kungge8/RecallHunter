@@ -14,7 +14,8 @@
     "tabs",
     "https://*/*",
     "http://*/*",
-    "https://www.instagram.com/*"
+    "https://www.instagram.com/*",
+    "*://*.amazon.com/gp/product/*"
   ],
   "browser_action": {},
   "background": {
@@ -24,10 +25,11 @@
   "default_locale": "en",
   "content_scripts": [
     {
-      "matches": ["https://www.instagram.com/?mobile=true"],
-      "js": ["cs.js"],
+      "matches": ["*://*.amazon.com/gp/product/*"],
+      "js": ["background.js"],
       "run_at" : "document_start",
-      "all_frames": true
+      "all_frames": true,
+      "persistent": true
     }
   ]
 }

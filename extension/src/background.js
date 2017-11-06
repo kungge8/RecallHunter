@@ -9,6 +9,14 @@ chrome.browserAction.onClicked.addListener(tab => {
   })
 })
 
+// document.addEventListener("DOMContentLoaded", () => {
+// 	console.log("App triggered");
+
+// 	chrome.tabs.executeScript(tab.id, {
+// 		file: 'browser.js'
+// 	});
+// });
+
 attachHeadersListener({
   webRequest: chrome.webRequest,
   hosts: url,
