@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Recall Hunter options</title>
+
+		<script src="./js/jquery-3.2.1.min.js"></script>
+		<script src="./js/popper.min.js"></script>
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<!-- <link rel="stylesheet" href="./css/bootstrap-grid.css"> -->
+		<script src="./js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="./css/style.css">
+	</head>
+
+	<body>
+		<header class="container">
+			<div class="row justify-content-center">
+				<h1>Manage your watchlist!</h1>
+			</div>
+		</header>
+		
+		<p id="currUser"></p>
+		<div class="navbar navbar-light row justify-content-center">
+			<button id="watchList" class="navButton btn btn-default">Watch List</button>
+			<button id="userOptions" class="navButton btn btn-default">User Account</button>
+		</div>
+
+		<div id="listHolder" class="container">
+		</div>
+
+		<script src="./js/optionsController.js"></script>
+	</body>
+</html>
