@@ -12788,13 +12788,18 @@ var App = function (_Component) {
       //     console.log(res);
       // });
 
-      chrome.storage.sync.get("testing", function (items) {
+      chrome.storage.sync.get("recallUser", function (items) {
         if (!chrome.runtime.error) {
           if ($.isEmptyObject(items)) {
-            console.log("recallUser is empty: ", items);
-          } else {
-            console.log("recallUser is not empty: ", items);
+            $.get('https://shielded-retreat-77848.herokuapp.com/api/newToken'), function (req, res) {
+              console.log(res._id);
+              chrome.storage.sync.set({ "recallUser": res._id });
+              this.setState({ user: res._id });
+            };
           }
+          // else {
+          //   console.log("recallUser is not empty: ", items);
+          // }
         }
       });
     }, _temp), _possibleConstructorReturn(_this, _ret);

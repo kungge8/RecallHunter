@@ -30,8 +30,12 @@ class App extends Component {
       if (!chrome.runtime.error){
         if($.isEmptyObject(items))
         {
-          console.log("recallUser is empty: ", items);
-        } 
+          $.get('https://shielded-retreat-77848.herokuapp.com/api/newToken'), function(req, res) {
+            console.log(res._id);
+            chrome.storage.sync.set({"recallUser": res._id});
+            this.setState({user: res._id});
+          }
+        }
         // else {
         //   console.log("recallUser is not empty: ", items);
         // }
