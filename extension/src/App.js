@@ -6,7 +6,12 @@ import './main.css';
 class App extends Component {
 	state = {
 		timer: 0,
-    optionsUrl: chrome.extension.getURL('optionsPage/optionsIndex.html')
+    optionsUrl: chrome.extension.getURL('optionsPage/optionsIndex.html'),
+    user: chrome.storage.sync.get("recallUser", function(items){
+      if(chrome.runtime.error){
+        console.log("Chrome error: ", chrome.runtime.error);
+      }
+    })
 	}
 
 	// tick = () => {
@@ -17,21 +22,21 @@ class App extends Component {
 
 	componentDidMount = () => {
 
-    $.get('https://warm-tor-17137.herokuapp.com/articles', function(req, res) {
-        console.log(res);
-    });
+    // $.get('https://warm-tor-17137.herokuapp.com/articles', function(req, res) {
+    //     console.log(res);
+    // });
 
     chrome.storage.sync.get("recallUser", function(items){
       if (!chrome.runtime.error){
-        console.log(items);
+        if($.isEmptyObject(items))
+        {
+          console.log("recallUser is empty: ", items);
+        } 
+        // else {
+        //   console.log("recallUser is not empty: ", items);
+        // }
       }
     });
-
-    chrome.storage.sync.set({"testing": "testing123"}, function(){
-      if (chrome.runtime.error){
-        console.log("runtimeError");
-      }
-    })
 	}
 
   render() {

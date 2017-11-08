@@ -68,7 +68,7 @@ app.post('/api/new_users', function(req, res) {
 
 // get user's watchlist
 app.get('/api/watchlists', function(req, res) {
-	db.User.findOne({email:req.body.email}).then(function(dbUser) {
+	db.User.findOne({_id:req.body._id}).then(function(dbUser) {
 		console.log('dbUser: ', dbUser);
 		res.json(dbUser);
 	}).catch(function(err) {
@@ -78,7 +78,7 @@ app.get('/api/watchlists', function(req, res) {
 
 // add product to user's watchlist
 app.put('/api/watchlists', function(req, res) {
-	db.User.findOneAndUpdate({email: req.body.email}, {$push: {watchlist: req.body}}, {new: true}).then(
+	db.User.findOneAndUpdate({_id: req.body._id}, {$push: {watchlist: req.body.product}}, {new: true}).then(
 		function(dbUser) {
 			res.json(dbUser);
 	}).catch(function(err) {

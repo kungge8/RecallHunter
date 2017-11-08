@@ -12776,22 +12776,25 @@ var App = function (_Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       timer: 0,
-      optionsUrl: chrome.extension.getURL('optionsPage/optionsIndex.html')
+      optionsUrl: chrome.extension.getURL('optionsPage/optionsIndex.html'),
+      user: chrome.storage.sync.get("recallUser", function (items) {
+        if (chrome.runtime.error) {
+          console.log("Chrome error: ", chrome.runtime.error);
+        }
+      })
     }, _this.componentDidMount = function () {
 
-      $.get('https://warm-tor-17137.herokuapp.com/articles', function (req, res) {
-        console.log(res);
-      });
+      // $.get('https://warm-tor-17137.herokuapp.com/articles', function(req, res) {
+      //     console.log(res);
+      // });
 
-      chrome.storage.sync.get("recallUser", function (items) {
+      chrome.storage.sync.get("testing", function (items) {
         if (!chrome.runtime.error) {
-          console.log(items);
-        }
-      });
-
-      chrome.storage.sync.set({ "testing": "testing123" }, function () {
-        if (chrome.runtime.error) {
-          console.log("runtimeError");
+          if ($.isEmptyObject(items)) {
+            console.log("recallUser is empty: ", items);
+          } else {
+            console.log("recallUser is not empty: ", items);
+          }
         }
       });
     }, _temp), _possibleConstructorReturn(_this, _ret);
