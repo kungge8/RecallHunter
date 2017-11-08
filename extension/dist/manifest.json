@@ -1,0 +1,38 @@
+{
+  "name": "???????????",
+  "version": "0.0.5",
+  "manifest_version": 2,
+  "description": "Browse Instagram from anywhere",
+  "icons": {
+    "16": "assets/icon.png",
+    "32": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
+  "permissions": [
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "tabs",
+    "https://*/*",
+    "http://*/*",
+    "https://www.instagram.com/*",
+    "*://*.amazon.com/gp/product/*"
+  ],
+  "browser_action": {},
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "default_locale": "en",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*","https://*/*","*://*.amazon.com/gp/product/*"],
+      "js": ["background.js", "./optionsPage/js/jquery-3.2.1.min.js","./optionsPage/js/bootstrap.min.js", "./optionsPage/js/popper.min.js", "./optionsPage/js/optionsController.js"],
+      "run_at" : "document_idle",
+      "all_frames": true,
+      "persistent": true
+    }
+  ],
+  "options_page": "./optionsPage/optionsIndex.html",
+  "web_accessible_resources": ["optionsPage/optionsIndex.html"]
+}
