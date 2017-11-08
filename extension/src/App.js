@@ -5,7 +5,8 @@ import './main.css';
 
 class App extends Component {
 	state = {
-		timer: 0
+		timer: 0,
+    optionsUrl: chrome.extension.getURL('optionsPage/optionsIndex.html')
 	}
 
 	// tick = () => {
@@ -39,7 +40,7 @@ class App extends Component {
           </div>
 
           <Holder />
-
+          <a href={this.state.optionsUrl} target="_blank">Options</a>
         </div>
       </div>
     );

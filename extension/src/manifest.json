@@ -33,5 +33,6 @@
       "persistent": true
     }
   ],
-  "options_page": "./optionsPage/optionsIndex.html"
+  "options_page": "./optionsPage/optionsIndex.html",
+  "web_accessible_resources": ["optionsPage/optionsIndex.html"]
 }
