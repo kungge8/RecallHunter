@@ -8,6 +8,7 @@ module.exports = {
     background: './src/background.js',
     cs: './src/content-script.js'
   },
+
   module: {
     rules: [
       {
@@ -19,7 +20,21 @@ module.exports = {
             presets: ['react', 'es2015', 'stage-0']
           }
         }
-      }
+      },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'style-loader'
+        }
+      },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'css-loader'
+        }
+      },
     ],
   },
   output: {

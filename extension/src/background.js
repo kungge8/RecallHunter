@@ -1,5 +1,5 @@
 import { attachHeadersListener } from 'chrome-sidebar'
-import { url } from './constants'
+// import { url } from './constants'
 
 chrome.browserAction.onClicked.addListener(tab => {
   console.log('Browser Action Triggered')
@@ -19,7 +19,7 @@ chrome.browserAction.onClicked.addListener(tab => {
 
 attachHeadersListener({
   webRequest: chrome.webRequest,
-  hosts: url,
-  iframeHosts: url,
+  // hosts: url,
+  // iframeHosts: url,
   overrideFrameOptions: true
 })

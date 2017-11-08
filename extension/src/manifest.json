@@ -9,6 +9,7 @@
     "128": "assets/icon.png"
   },
   "permissions": [
+    "storage",
     "webRequest",
     "webRequestBlocking",
     "tabs",
@@ -25,11 +26,12 @@
   "default_locale": "en",
   "content_scripts": [
     {
-      "matches": ["*://*.amazon.com/gp/product/*"],
-      "js": ["background.js"],
-      "run_at" : "document_start",
+      "matches": ["http://*/*","https://*/*","*://*.amazon.com/gp/product/*"],
+      "js": ["background.js", "./optionsPage/js/jquery-3.2.1.min.js","./optionsPage/js/bootstrap.min.js", "./optionsPage/js/popper.min.js", "./optionsPage/js/optionsController.js"],
+      "run_at" : "document_idle",
       "all_frames": true,
       "persistent": true
     }
-  ]
+  ],
+  "options_page": "./optionsPage/optionsIndex.html"
 }

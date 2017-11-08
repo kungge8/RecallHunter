@@ -23,8 +23,13 @@
     "webpack-dev-server": "~2.4.5"
   },
   "dependencies": {
+    "axios": "^0.17.0",
     "chrome-sidebar": "~0.1.2",
+    "css-loader": "^0.28.7",
+    "enhanced-resolve": "^3.4.1",
+    "popper.js": "^1.12.6",
     "react": "~15.5.4",
-    "react-dom": "~15.5.4"
+    "react-dom": "~15.5.4",
+    "style-loader": "^0.19.0"
   }
 }

@@ -44,3 +44,31 @@ iframe {
   transition: opacity 0.5s linear;
   opacity: 1;
 }
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.heading{
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.form{
+  text-align: center;
+}
+
+h4{
+  margin-top: 15px;
+}
+
+.appTitle{
+  color: blue;
+}
+
+.centering{
+  width: 100%;
+  text-align: center;
+}
