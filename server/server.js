@@ -46,6 +46,16 @@ app.get('/api/users', function(req, res) {
 	});
 });
 
+//create new user and return userId
+app.post('/api/newToken', function(req, res) {
+	db.User.create({}).then(function(dbUser) {
+		console.log('dbUser: ', dbUser);
+		res.json(dbUser);
+	}).catch(function(err) {
+		res.json(err);
+	});
+});
+
 // create a new user
 app.post('/api/new_users', function(req, res) {
 	db.User.create({email: req.body.email, password: req.body.password}).then(function(dbUser) {
