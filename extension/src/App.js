@@ -28,17 +28,22 @@ class App extends Component {
 
     chrome.storage.sync.get("recallUser", function(items){
       if (!chrome.runtime.error){
-        if($.isEmptyObject(items))
-        {
-          $.get('https://shielded-retreat-77848.herokuapp.com/api/newToken'), function(req, res) {
-            console.log(res._id);
-            chrome.storage.sync.set({"recallUser": res._id});
-            this.setState({user: res._id});
-          }
+        if($.isEmptyObject(items)) {
+          $.ajax({
+            method: "GET",
+            url: "https://shielded-retreat-77848.herokuapp.com/api/newToken"
+           }).done(function(res) {
+              chrome.storage.sync.set({"recallUser": res._id}, function() {
+                chrome.storage.sync.get("recallUser", function(item) {
+                  console.log(item);
+                });
+              });
+              this.setState({user: res._id});
+           });
         }
-        // else {
-        //   console.log("recallUser is not empty: ", items);
-        // }
+        else {
+          console.log("recallUser is not empty: ", items);
+        }
       }
     });
 	}
