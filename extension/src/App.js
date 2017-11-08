@@ -16,7 +16,12 @@ class App extends Component {
 	// }
 
 	componentDidMount = () => {
-		chrome.storage.sync.get("recallUser", function(items){
+
+    $.get('https://warm-tor-17137.herokuapp.com/articles', function(req, res) {
+        console.log(res);
+    });
+
+    chrome.storage.sync.get("recallUser", function(items){
       if (!chrome.runtime.error){
         console.log(items);
       }

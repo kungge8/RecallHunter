@@ -32,7 +32,8 @@ DB.once('open', function() {
 });
 
 app.get('/', function(req, res) {
-
+	console.log('Hello');
+	res.send('Hello World');
 });
 
 // see if user/password exists
@@ -86,7 +87,7 @@ app.delete('/api/watchlists', function(req, res) {
 		});
 });
 
-// delete user 
+// delete user
 app.delete('/api/delete_users', function(req, res) {
 	db.User.findOne({email: req.body.email}).then(function(dbUser) {
 		//not finished
@@ -99,5 +100,9 @@ app.delete('/api/delete_users', function(req, res) {
 	// }).catch(function(err) {
 	// 	res.json(err);
 	// });
+});
+
+app.listen(PORT, function() {
+	console.log(`App running on port ${PORT}!`);
 });
 
