@@ -59,9 +59,7 @@ app.get('/users', function(req, res) {
 app.get('/api/newToken', function(req, res) {
 	db.User.create({}).then(function(dbUser) {
 		console.log('dbUser: ', dbUser);
-		// res.json(dbUser);
-		// res.json({message: "I hope you see this"});
-		res.send('hello world');
+		res.json(dbUser);
 	}).catch(function(err) {
 		res.json(err);
 	});
