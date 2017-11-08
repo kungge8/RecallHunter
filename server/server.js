@@ -47,7 +47,7 @@ app.get('/api/users', function(req, res) {
 });
 
 //create new user and return userId
-app.post('/api/newToken', function(req, res) {
+app.get('/api/newToken', function(req, res) {
 	db.User.create({}).then(function(dbUser) {
 		console.log('dbUser: ', dbUser);
 		res.json(dbUser);
