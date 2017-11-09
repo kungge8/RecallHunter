@@ -60,7 +60,7 @@ function renderList(prodArr){
 function getWatchLi(user){
 	console.log("getASDad: ", currUser.recallUser);
 	$.ajax({
-        method: "GET",
+        method: "POST",
         url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists",
         data: {
           // _id: currUser.recallUser

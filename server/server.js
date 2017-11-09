@@ -76,7 +76,7 @@ app.get('/api/newToken', function(req, res) {
 // });
 
 // get user's watchlist
-app.get('/api/watchlists', function(req, res) {
+app.post('/api/watchlists', function(req, res) {
 	console.log(req.body);
 	// db.User.findOne({_id:req.body._id}).then(function(dbUser) {
 	// 	console.log(req.body._id);
