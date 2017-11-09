@@ -86,6 +86,7 @@ app.get('/api/watchlists', function(req, res) {
 });
 
 // add product to user's watchlist
+// Extension currently wants to pass this a string for a product title instead of a product ID. 11/9 0026
 app.put('/api/watchlists', function(req, res) {
 	db.User.findOneAndUpdate({_id: req.body._id}, {$push: {watchlist: req.body.product}}, {new: true}).then(
 		function(dbUser) {
