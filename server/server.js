@@ -77,14 +77,14 @@ app.get('/api/newToken', function(req, res) {
 
 // get user's watchlist
 app.post('/api/watchlists', function(req, res) {
-	console.log(req.body);
-	// db.User.findOne({_id:req.body._id}).then(function(dbUser) {
-	// 	console.log(req.body._id);
-	// 	console.log('dbUser: ', dbUser);
-	// 	res.json(dbUser);
-	// }).catch(function(err) {
-	// 	res.json(err);
-	// });
+
+	db.User.findOne({_id:req.body._id}).then(function(dbUser) {
+		console.log(req.body._id);
+		console.log('dbUser: ', dbUser);
+		res.json(dbUser);
+	}).catch(function(err) {
+		res.json(err);
+	});
 });
 
 // add product to user's watchlist
