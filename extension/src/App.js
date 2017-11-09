@@ -51,20 +51,20 @@ class App extends Component {
   }
 
   //partially applied function to hold the user id from state in App, and pass it down to each addWatch button rendered by Search to use as an onClick
-  addToWatch = (user) => {
+  addToWatch = (user, product) => {
     return (event) => {
-      let data = {
-        _id: user,
-        product: event.target.getAttribute("title")
-      };
+      // let data = {
+      //   _id: user,
+      //   product: product
+      // };
 
-      console.log("addtowatch DATA: ", data);
+      // console.log("addtowatch DATA: ", data);
       $.ajax({
         method: "PUT",
         url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists",
         data: {
           _id: user,
-          product: event.target.getAttribute("title")
+          product: product
         }
       }).done(
         function(res){
@@ -85,7 +85,7 @@ class App extends Component {
           </div>
 
           <Input onProductChange={this.saveProduct} product={this.state.product} />
-          <Search product={this.state.product} addWatch={this.addToWatch(this.state.user.recallUser)} />
+          <Search product={this.state.product} addWatch={this.addToWatch(this.state.user.recallUser, this.state.product)} />
 
           <a href={this.state.optionsUrl} target="_blank">Options</a>
         </div>

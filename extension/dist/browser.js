@@ -13043,20 +13043,20 @@ var App = function (_Component) {
       // this.setState({product: product},function(){
       //   console.log(this.state.product);
       // });
-    }, _this.addToWatch = function (user) {
+    }, _this.addToWatch = function (user, product) {
       return function (event) {
-        var data = {
-          _id: user,
-          product: event.target.getAttribute("title")
-        };
+        // let data = {
+        //   _id: user,
+        //   product: product
+        // };
 
-        console.log("addtowatch DATA: ", data);
+        // console.log("addtowatch DATA: ", data);
         $.ajax({
           method: "PUT",
           url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists",
           data: {
             _id: user,
-            product: event.target.getAttribute("title")
+            product: product
           }
         }).done(function (res) {
           console.log("addToWatch Ran: ", res);
@@ -13088,7 +13088,7 @@ var App = function (_Component) {
             )
           ),
           _react2.default.createElement(_Input2.default, { onProductChange: this.saveProduct, product: this.state.product }),
-          _react2.default.createElement(_Search2.default, { product: this.state.product, addWatch: this.addToWatch(this.state.user.recallUser) }),
+          _react2.default.createElement(_Search2.default, { product: this.state.product, addWatch: this.addToWatch(this.state.user.recallUser, this.state.product) }),
           _react2.default.createElement(
             'a',
             { href: this.state.optionsUrl, target: '_blank' },
