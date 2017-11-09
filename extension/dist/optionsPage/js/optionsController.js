@@ -63,7 +63,8 @@ function getWatchLi(user){
         method: "GET",
         url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists",
         data: {
-          _id: currUser.recallUser
+          // _id: currUser.recallUser
+          msg: 'Hi'
         }
       }).done(
         function(res){
