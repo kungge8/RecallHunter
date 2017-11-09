@@ -41,7 +41,11 @@ function renderList(prodArr){
 				</div>
 				<div class="card-body">
 					<p class="card-text">${n}</p>
+					<div class="${n}">
+
+					</div>
 					<div class="row justify-content-end">
+						<button class="searchButton btn btn-primary justify-content-end" prodId="${n}">Search</button>
 						<button class="deleteButton btn btn-primary justify-content-end" prodId="${n}">Remove</button>
 					</div>
 				</div>
@@ -54,6 +58,7 @@ function renderList(prodArr){
 	});
 
 	$('.deleteButton').on("click", delProduct);
+	$('.searchButton').on("click", searchRecall);
 }
 
 //Query DB for user's wishlist
@@ -81,17 +86,38 @@ function delProduct(user){
 
 
 	$.ajax({
-        method: "POST",
-        url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists-delete",
-        data: {
-          _id: currUser.recallUser,
-          product: $(this).attr("prodId")
-        }
-      }).done(
-        function(resp){
-          console.log("delProduct Ran: ", resp);
-        }
-      )
+    method: "POST",
+    url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists-delete",
+    data: {
+      _id: currUser.recallUser,
+      product: $(this).attr("prodId")
+    }
+  }).done(
+    function(resp){
+      console.log("delProduct Ran: ", resp);
+    }
+  )
+}
+
+function searchRecall(e){
+	$.ajax({
+    method: "GET",
+    url: `https://www.saferproducts.gov/RestWebServices/Recall?ProductName=${e.target.getAttribute("prodId")}&Format=json`
+  }).done(
+    function(resp){
+      console.log("searchRecall Ran: ", resp);
+      // console.log("ASDasd: ", e.target.getAttribute("prodId"));
+      $(`.${e.target.getAttribute("prodId")}`).empty();
+      resp.map((n) => {
+      	$(`.${e.target.getAttribute("prodId")}`).append(`
+					<div>
+						<p>${n.Description}</p>
+						<a href="${n.URL}" target="_blank">Link</a>
+					</div>
+      	`);
+      })
+    }
+  )
 }
 
 function renderUserSet(user){
