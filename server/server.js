@@ -100,16 +100,12 @@ app.put('/api/watchlists', function(req, res) {
 
 // delete a product from user's watchlist
 app.post('/api/watchlists-delete', function(req, res) {
-	db.User.findOneAndUpdate({_id: req.body._id}, {$pull: {watchlist: req.body.product}}, {new: true});
+	db.User.findOneAndUpdate({_id: req.body._id}, {$pull: {watchlist: req.body.product}}, {new: true})
+	.then(
+		function(dbUser) {
+			res.json(dbUser);
+		});
 });
-// 	.then(
-// 		function(dbUser) {
-// 			db.Product.findOneAndRemove({watchlist: req.body.product}).then(function(dbProduct) {
-// 				console.log('dbProduct: ', dbProduct);
-// 				res.json(dbProduct);
-// 			});
-// 		});
-// });
 
 // delete user
 app.delete('/api/delete_users', function(req, res) {

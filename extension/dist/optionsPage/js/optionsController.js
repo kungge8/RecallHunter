@@ -78,6 +78,8 @@ function getWatchLi(user){
 function delProduct(user){
 	console.log("delete ran: " + $(this).attr("prodId"));
 
+
+
 	$.ajax({
         method: "POST",
         url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists-delete",
@@ -86,8 +88,8 @@ function delProduct(user){
           product: $(this).attr("prodId")
         }
       }).done(
-        function(res){
-          console.log("delProduct Ran: ", res);
+        function(resp){
+          console.log("delProduct Ran: ", resp);
         }
       )
 }
