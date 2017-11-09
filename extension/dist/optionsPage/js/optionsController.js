@@ -58,7 +58,7 @@ function renderList(prodArr){
 
 //Query DB for user's wishlist
 function getWatchLi(user){
-	console.log(currUser);
+	console.log("getASDad: ", currUser.recallUser);
 	$.ajax({
         method: "GET",
         url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists",
