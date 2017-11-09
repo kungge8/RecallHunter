@@ -133,9 +133,10 @@ $('document').ready(function(){
 	let p = getUser();
 	p.then(function (items){
 		console.log('document ready: ', items)
-		currUser = {
-			"recallUser": "5a0472af0d8e040012f06317"
-		};
+		// currUser = {
+		// 	"recallUser": "5a0472af0d8e040012f06317"
+		// };
+		currUser = items;
 		getWatchLi(currUser);
 	});
 	// window.setTimeout(function(){console.log(currUser)},3000);
