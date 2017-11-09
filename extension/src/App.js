@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Holder from './components/Holder.js';
+import Input from './components/Input.js';
+import Search from './components/Search.js';
+import Watchlist from './components/Watchlist.js';
 // import logo from './logo.svg';
 import './main.css';
 
@@ -7,25 +10,12 @@ class App extends Component {
 	state = {
 		timer: 0,
     optionsUrl: chrome.extension.getURL('optionsPage/optionsIndex.html'),
-    user: chrome.storage.sync.get("recallUser", function(items){
-      if(chrome.runtime.error){
-        console.log("Chrome error: ", chrome.runtime.error);
-      }
-    })
+    user: {},
+    product: document.getElementById("productTitle").innerHTML.trim()
 	}
 
-	// tick = () => {
-	// 	this.setState({
-	// 		timer: this.state.timer + 1
-	// 	});
-	// }
-
 	componentDidMount = () => {
-
-    // $.get('https://warm-tor-17137.herokuapp.com/articles', function(req, res) {
-    //     console.log(res);
-    // });
-
+    let parent = this;
     chrome.storage.sync.get("recallUser", function(items){
       if (!chrome.runtime.error){
         if($.isEmptyObject(items)) {
@@ -38,18 +28,53 @@ class App extends Component {
                   console.log(item);
                 });
               });
-              this.setState({user: res._id});
+              parent.setState({user: {'recallUser': res._id}});
            });
         }
         else {
           console.log("recallUser is not empty: ", items);
+          parent.setState({
+            user: items
+          })
         }
       }
     });
 	}
 
+  saveProduct = (e) => {
+    this.setState({product: e.target.value}, function(){
+      console.log(this.state.product);
+    });
+    // this.setState({product: product},function(){
+    //   console.log(this.state.product);
+    // });
+  }
+
+  addToWatch = (user) => {
+    return (title) => {
+      let data = {
+        _id: user,
+        product: title.target.getAttribute("title")
+      };
+
+      console.log("addtowatch DATA: ", data);
+      $.ajax({
+        method: "PUT",
+        url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists",
+        data: {
+          _id: user,
+          product: title.target.getAttribute("title")
+        }
+      }).done(
+        function(res){
+          console.log("addToWatch Ran: ", res);
+        }
+      )
+    }
+  }
+
   render() {
-  	console.log("app element loaded");
+  	console.log("app element loaded", this.state.user);
     return (
       <div className="App">
         <div className='container'>
@@ -58,7 +83,9 @@ class App extends Component {
             <h1 className='appTitle'>Recall Raven</h1>
           </div>
 
-          <Holder />
+          <Input onProductChange={this.saveProduct} product={this.state.product} />
+          <Search product={this.state.product} addWatch={this.addToWatch(this.state.user.recallUser)} />
+
           <a href={this.state.optionsUrl} target="_blank">Options</a>
         </div>
       </div>
