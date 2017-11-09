@@ -50,8 +50,9 @@ class App extends Component {
     // });
   }
 
+  //partially applied function to hold the user id from state in App, and pass it down to each addWatch button rendered by Search to use as an onClick
   addToWatch = (user) => {
-    return (title) => {
+    return (event) => {
       let data = {
         _id: user,
         product: title.target.getAttribute("title")
@@ -63,7 +64,7 @@ class App extends Component {
         url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists",
         data: {
           _id: user,
-          product: title.target.getAttribute("title")
+          product: event.target.getAttribute("title")
         }
       }).done(
         function(res){

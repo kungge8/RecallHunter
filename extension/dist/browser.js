@@ -13044,7 +13044,7 @@ var App = function (_Component) {
       //   console.log(this.state.product);
       // });
     }, _this.addToWatch = function (user) {
-      return function (title) {
+      return function (event) {
         var data = {
           _id: user,
           product: title.target.getAttribute("title")
@@ -13056,7 +13056,7 @@ var App = function (_Component) {
           url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists",
           data: {
             _id: user,
-            product: title.target.getAttribute("title")
+            product: event.target.getAttribute("title")
           }
         }).done(function (res) {
           console.log("addToWatch Ran: ", res);
@@ -13064,6 +13064,9 @@ var App = function (_Component) {
       };
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
+
+  //partially applied function to hold the user id from state in App, and pass it down to each addWatch button rendered by Search to use as an onClick
+
 
   _createClass(App, [{
     key: 'render',
@@ -14202,7 +14205,7 @@ exports = module.exports = __webpack_require__(142)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  margin: 0;\n  height: 557px;\n  width: 375px;\n  background-color: white;\n}\n\n@keyframes spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n\niframe {\n  border: 0;\n}\n\n.spinner {\n  animation: spin 1.5s infinite linear;\n  max-width: 2rem;\n  margin-bottom: 1rem;\n  margin-top: 10rem;\n}\n\n.container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  z-index: 0;\n}\n\n.overtop {\n  z-index: 10;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 375px;\n  height: 557px;\n  transition: opacity 0.5s linear;\n  opacity: 1;\n}\n\n*{\n  margin: 0;\n  padding: 0;\n}\n\n.heading{\n  text-align: center;\n  margin-top: 5px;\n  margin-bottom: 20px;\n}\n\n.form{\n  text-align: center;\n}\n\nh4{\n  margin-top: 15px;\n}\n\n.appTitle{\n  color: blue;\n}\n\n.centering{\n  width: 100%;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "*{\n  font-family: 'Raleway', sans-serif\n}\n\n.container,html,.App{\n  background-color: #232f3e;\n  color: #fff;\n}\n\nh1{\n  text-align: center;\n  margin-top: 10px;\n}\n\n.btn{\n  background-color: #fe9900;\n  margin-bottom: 20px;\n}\n\n.btn:hover{\n  background-color: #fff;\n  color: #fe9900;\n}\n\n\nh4{\n  text-align: center;\n  margin-top: 20px;\n}\n\n\n\n.centering{\n  width: 100%;\n  text-align: center;\n}\n\n.productChosen{\n  text-align: center;\n}\n\ninput{\n  width: 80%;\n  margin-left: 10%;\n  border-radius: 3px;\n  border: 2px solid #fe9900;\n  background-color: #232f3e;\n  color: #fff;\n  text-align: center;\n}\n\n.recall-container{\n  border: 1px solid #fe9900;\n  border-radius: 3px;\n  margin: 10px;\n  box-shadow: 2px 2px 10px #111;\n  text-align: center;\n  padding: 10px;\n\n}\n\n.resultDiv{\n  /*text-align: center;*/\n}\n\n/*body {\n  margin: 0;\n  height: 557px;\n  width: 375px;\n  background-color: white;\n}\n\n@keyframes spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n\niframe {\n  border: 0;\n}\n\n.spinner {\n  animation: spin 1.5s infinite linear;\n  max-width: 2rem;\n  margin-bottom: 1rem;\n  margin-top: 10rem;\n}\n\n.container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  z-index: 0;\n}\n\n.overtop {\n  z-index: 10;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 375px;\n  height: 557px;\n  transition: opacity 0.5s linear;\n  opacity: 1;\n}\n\n*{\n  margin: 0;\n  padding: 0;\n}\n\n.heading{\n  text-align: center;\n  margin-top: 5px;\n  margin-bottom: 20px;\n}\n\n.form{\n  text-align: center;\n}\n\nh4{\n  margin-top: 15px;\n}\n\n.appTitle{\n  color: blue;\n}\n\n.centering{\n  width: 100%;\n  text-align: center;\n}\n*/", ""]);
 
 // exports
 
