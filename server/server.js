@@ -99,7 +99,7 @@ app.put('/api/watchlists', function(req, res) {
 });
 
 // delete a product from user's watchlist
-app.delete('/api/watchlists', function(req, res) {
+app.post('/api/watchlists-delete', function(req, res) {
 	db.User.findOneAndUpdate({_id: req.body._id}, {$pull: {watchlist: req.body.product}}, {new: true});
 });
 // 	.then(

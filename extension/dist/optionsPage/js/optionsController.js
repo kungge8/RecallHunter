@@ -37,12 +37,12 @@ function renderList(prodArr){
 		let temp = $(`
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">${n.name}</h3>
+					<h3 class="card-title">${n}</h3>
 				</div>
 				<div class="card-body">
-					<p class="card-text">${n.desc}</p>
+					<p class="card-text">${n}</p>
 					<div class="row justify-content-end">
-						<button class="deleteButton btn btn-primary justify-content-end" prodId="${n.id}">Remove</button>
+						<button class="deleteButton btn btn-primary justify-content-end" prodId="${n}">Remove</button>
 					</div>
 				</div>
 			</div>
@@ -67,7 +67,7 @@ function getWatchLi(user){
         }
       }).done(
         function(res){
-        	dummyList = res;
+        	dummyList = res.watchlist;
           console.log("getWatchLi Ran: ", res);
           renderList(dummyList);
         }
@@ -77,6 +77,19 @@ function getWatchLi(user){
 //Query DB to remove product from user's wishlist
 function delProduct(user){
 	console.log("delete ran: " + $(this).attr("prodId"));
+
+	$.ajax({
+        method: "POST",
+        url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists-delete",
+        data: {
+          _id: currUser.recallUser,
+          product: $(this).attr("prodId")
+        }
+      }).done(
+        function(res){
+          console.log("delProduct Ran: ", res);
+        }
+      )
 }
 
 function renderUserSet(user){
