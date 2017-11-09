@@ -13047,7 +13047,7 @@ var App = function (_Component) {
       return function (event) {
         var data = {
           _id: user,
-          product: title.target.getAttribute("title")
+          product: event.target.getAttribute("title")
         };
 
         console.log("addtowatch DATA: ", data);

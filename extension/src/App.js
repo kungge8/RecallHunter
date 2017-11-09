@@ -55,7 +55,7 @@ class App extends Component {
     return (event) => {
       let data = {
         _id: user,
-        product: title.target.getAttribute("title")
+        product: event.target.getAttribute("title")
       };
 
       console.log("addtowatch DATA: ", data);

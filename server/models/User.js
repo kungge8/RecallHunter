@@ -12,8 +12,7 @@ const UserSchema = new Schema({
   //   required: true
   // },
   watchlist: [{
-    type: Schema.Types.ObjectId,
-    ref: "Product"
+    type: String
   }]
 });
 
