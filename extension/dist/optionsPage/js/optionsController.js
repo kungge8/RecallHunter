@@ -1,24 +1,27 @@
-var dummyList = [{
-	id: "1",
-	name: "prod1",
-	desc: "a foot"
-},{
-	id: "2",
-	name: "prod2",
-	desc: "a leg"
-},{
-	id: "3",
-	name: "prod3",
-	desc: "I'm not really sure what this is..."
-}]
+// var dummyList = [{
+// 	id: "1",
+// 	name: "prod1",
+// 	desc: "a foot"
+// },{
+// 	id: "2",
+// 	name: "prod2",
+// 	desc: "a leg"
+// },{
+// 	id: "3",
+// 	name: "prod3",
+// 	desc: "I'm not really sure what this is..."
+// }]
+
+var dummyList = [];
 
 var currUser = {};
 
 //Get User
 function getUser(){
 	return new Promise(function(res, rej){
-		chrome.storage.sync.get("testing", function(items){
+		chrome.storage.sync.get("recallUser", function(items){
 			if(!chrome.runtime.error){
+				// console.log("getUser: ", items);
 				res(items);
 			} else {
 				rej();
@@ -55,7 +58,20 @@ function renderList(prodArr){
 
 //Query DB for user's wishlist
 function getWatchLi(user){
-	renderList(dummyList);
+	console.log(currUser);
+	$.ajax({
+        method: "GET",
+        url: "https://shielded-retreat-77848.herokuapp.com/api/watchlists",
+        data: {
+          _id: currUser.recallUser
+        }
+      }).done(
+        function(res){
+        	dummyList = res;
+          console.log("getWatchLi Ran: ", res);
+          renderList(dummyList);
+        }
+      )
 }
 
 //Query DB to remove product from user's wishlist
@@ -75,7 +91,10 @@ $('document').ready(function(){
 	renderList(dummyList);
 	let p = getUser();
 	p.then(function (items){
-		currUser = items;
+		console.log('document ready: ', items)
+		currUser = {
+			"recallUser": "5a0472af0d8e040012f06317"
+		};
 		getWatchLi(currUser);
 	});
 	// window.setTimeout(function(){console.log(currUser)},3000);
