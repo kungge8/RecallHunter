@@ -41,12 +41,12 @@ function renderList(prodArr){
 				</div>
 				<div class="card-body">
 					<p class="card-text">${n}</p>
-					<div class="${n}">
+					<div class="${n.replace(/\s/g,'')}">
 
 					</div>
 					<div class="row justify-content-end">
-						<button class="searchButton btn btn-primary justify-content-end" prodId="${n}">Search</button>
-						<button class="deleteButton btn btn-primary justify-content-end" prodId="${n}">Remove</button>
+						<button class="searchButton btn btn-primary justify-content-end" prodId="${n.replace(/\s/g,'')}">Search</button>
+						<button class="deleteButton btn btn-primary justify-content-end" prodId="${n.replace(/\s/g,'')}">Remove</button>
 					</div>
 				</div>
 			</div>
@@ -109,14 +109,25 @@ function searchRecall(e){
       console.log("searchRecall Ran: ", resp);
       // console.log("ASDasd: ", e.target.getAttribute("prodId"));
       $(`.${e.target.getAttribute("prodId")}`).empty();
-      resp.map((n) => {
-      	$(`.${e.target.getAttribute("prodId")}`).append(`
-					<div>
-						<p>${n.Description}</p>
-						<a href="${n.URL}" target="_blank">Link</a>
-					</div>
-      	`);
-      })
+      	console.log('resp.length: ', resp.length);
+	      if (resp.length > 0) {
+		      resp.map((n) => {
+		      	$(`.${e.target.getAttribute("prodId")}`).append(`
+							<div>
+								<p>${n.Description}</p>
+								<a href="${n.URL}" target="_blank">Link</a>
+							</div>
+		      	`);
+		      })
+		    }
+		    else {
+		    	console.log('e.target.getAttribute("prodId")', e.target.getAttribute("prodId"));
+		    	$(`.${e.target.getAttribute("prodId")}`).append(`
+						<div>
+							<p>No results found.</p>
+						</div>
+		     `);
+		    }
     }
   )
 }
