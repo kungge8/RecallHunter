@@ -7,7 +7,7 @@ const Input = (props) => {
           <div className='form-group'>
             <h4>Product Name</h4>
             <p>Product Chosen: {props.product}</p>
-            <input type="text" className="form-control" id="productName" aria-describedby="productHelp" placeholder="" value={props.product} onChange={props.onProductChange} />
+            <input type="text" className="form-control juice" id="productName" aria-describedby="productHelp" placeholder="" value={props.product} onChange={props.onProductChange} />
           </div>
       </form>
     );

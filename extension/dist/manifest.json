@@ -1,8 +1,8 @@
 {
-  "name": "???????????",
+  "name": "RecallRaven",
   "version": "0.0.5",
   "manifest_version": 2,
-  "description": "Browse Instagram from anywhere",
+  "description": "Search Recalls From Amazon",
   "icons": {
     "16": "assets/icon.png",
     "32": "assets/icon.png",

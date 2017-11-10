@@ -45,8 +45,8 @@ function renderList(prodArr){
 
 					</div>
 					<div class="row justify-content-end">
-						<button class="searchButton btn btn-primary justify-content-end" prodId="${n.replace(/\s/g,'')}">Search</button>
-						<button class="deleteButton btn btn-primary justify-content-end" prodId="${n.replace(/\s/g,'')}">Remove</button>
+						<button class="searchButton btn btn-primary justify-content-end" prodId="${n}">Search</button>
+						<button class="deleteButton btn btn-primary justify-content-end" prodId="${n}">Remove</button>
 					</div>
 				</div>
 			</div>
@@ -108,11 +108,11 @@ function searchRecall(e){
     function(resp){
       console.log("searchRecall Ran: ", resp);
       // console.log("ASDasd: ", e.target.getAttribute("prodId"));
-      $(`.${e.target.getAttribute("prodId")}`).empty();
+      $(`.${e.target.getAttribute("prodId").replace(/\s/g,'')}`).empty();
       	console.log('resp.length: ', resp.length);
 	      if (resp.length > 0) {
 		      resp.map((n) => {
-		      	$(`.${e.target.getAttribute("prodId")}`).append(`
+		      	$(`.${e.target.getAttribute("prodId").replace(/\s/g,'')}`).append(`
 							<div>
 								<p>${n.Description}</p>
 								<a href="${n.URL}" target="_blank">Link</a>
@@ -122,7 +122,7 @@ function searchRecall(e){
 		    }
 		    else {
 		    	console.log('e.target.getAttribute("prodId")', e.target.getAttribute("prodId"));
-		    	$(`.${e.target.getAttribute("prodId")}`).append(`
+		    	$(`.${e.target.getAttribute("prodId").replace(/\s/g,'')}`).append(`
 						<div>
 							<p>No results found.</p>
 						</div>
