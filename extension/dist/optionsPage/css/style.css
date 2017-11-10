@@ -5,3 +5,53 @@
 body {
 	background: grey;
 }
+
+button{
+  background-color: #fe9900;
+  margin-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+	width: 150px;
+}
+
+button:hover{
+  background-color: #fff;
+  color: #fe9900;
+}
+
+html,body,.App{
+	background-color: #232f3e;
+  color: #fff;
+}
+
+.card{
+	border: 2px solid #fe9900;
+	background-color: #232f3e;
+}
+
+.searchButton{
+	float: left;
+	width: 50%;
+}
+
+.deleteButton{
+	width: 50%;
+}
+
+.searchButton,.deleteButton{
+	margin: 5px;
+	background-color: #fe9900;
+  margin-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+	margin-right: 25%;
+}
+
+.searchButton:hover,.deleteButton:hover{
+	background-color: #fff;
+  color: #fe9900;
+}
