@@ -95,6 +95,7 @@ function delProduct(user){
   }).done(
     function(resp){
       console.log("delProduct Ran: ", resp);
+      location.reload();
     }
   )
 }
